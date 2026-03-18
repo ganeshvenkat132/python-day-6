@@ -1,4 +1,4 @@
-m=int(input("enter number of values to be taken"))
+m=int(input("enter number of values to be taken: "))
 num=[0]*m
 
 for i in range(m):
@@ -28,11 +28,19 @@ if len(cate["high_risk"])>=3:
     print("Suspicious Pattern")
 
 risk="Low Risk"
-
-if freq>4 and total>3000:
+score=0
+if freq>5:
+    score+=5
+if total>9000:
+    score+=9
+if len(cate["high_risk"])>=1:
+    score+=1
+if score>=10:
     risk="High Risk"
-elif freq>3 or total>2500 or len(cate["high_risk"])>=3:
+elif score>=5:
     risk="Moderate Risk"
+else:
+    risk="Low Risk"
 
 print("Invalid:",cate["invalid"])
 print("Normal:",cate["normal"])
